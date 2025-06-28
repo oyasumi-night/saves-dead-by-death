@@ -35,7 +35,7 @@ return false
 end
 
 if CheckIfUserFollowed() == true then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Pro666Pro/Die-Of-Death/refs/heads/main/sauces/version-rayfield.txt"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/oyasumi-night/Nexerhub-dead-by-death/refs/heads/main/Dead-by-death.txt"))()
 return nil
 end
 
@@ -50,11 +50,11 @@ end
 end
 
 pcall(function()
-Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/source.lua"))()
+Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/oyasumi-night/Nexerhub-dead-by-death/refs/heads/main/Source-interface-deadbydeath-rayfield"))()
 end)
 
 pcall(function()
-Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/oyasumi-night/Nexerhub-dead-by-death/refs/heads/main/Source-interface-deadbydeath-rayfield"))()
 end)
 
 function Notify(title, content, time, mode)
@@ -75,7 +75,7 @@ Rayfield:Notify({
 end
 
 pcall(function()
-WebHandler = (loadstring or load)(game:HttpGet("https://raw.githubusercontent.com/Pro666Pro/CustomFunctions/refs/heads/main/funcs.txt"))()
+WebHandler = (loadstring or load)(game:HttpGet("https://raw.githubusercontent.com/oyasumi-night/Nexerhub-dead-by-death/refs/heads/main/deadbydeath-customfunctions"))()
 end)
 
 Window = Rayfield:CreateWindow({
@@ -161,7 +161,7 @@ pcall(function()
 game.CoreGui.OldRayField:Destroy()
 end)
 Notify("Success!", "Launching script, please wait...", 10, true)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Pro666Pro/Die-Of-Death/refs/heads/main/sauces/version-rayfield.txt"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/oyasumi-night/Nexerhub-dead-by-death/refs/heads/main/Dead-by-death.txt"))()
 else
 Notify("Error!", "You aren't followed! ( If you arleady followed, wait for about 5 minutes and try again )")
 end
