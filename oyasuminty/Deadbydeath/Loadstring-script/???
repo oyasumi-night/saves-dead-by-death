@@ -946,9 +946,10 @@ preferedkillingmethod = TableFirstElementToString(Value)
 end; })
 
 PremiumFeatures:CreateButton({Name = "Insta-Kill Killer [OP!]"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if hasAccess then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 local function checkifgotflingedlol(hrp)
     local velocity = hrp.Velocity
@@ -1019,9 +1020,10 @@ PremiumFeatures:CreateParagraph({Title = "Info [ Server-Break ]", Content = "Bre
 PremiumFeatures:CreateParagraph({Title = "How To Use [ Server-Break ]", Content = "Activate when match started ( you should be survivor, AKA civilian ),\nthen wait until everyone dies ( when lms starts between you and killer ).\nAfter this you'll automatically rejoin this server and ta-daa!\nServer will break."})
 
 PremiumFeatures:CreateButton({Name = "Server-Break [OP!]"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if hasAccess then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 
 if #game:GetService("Players"):GetPlayers() < 3 then
@@ -1081,9 +1083,10 @@ end; })
 PremiumFeatures:CreateParagraph({Title = "Info [ No Stun ]", Content = "You won't be stunned anymore. That's all"})
 
 PremiumFeatures:CreateToggle({Name = "No Stun"; CurrentValue = false; Callback = function(Value)
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if hasAccess then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 AntiStun = Value
 if AntiStun == true then
@@ -1121,9 +1124,10 @@ loadedanim:Play()
 end
 
 PremiumFeatures:CreateButton({Name = "Play Choosen Anim"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if hasAccess then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 if preferedanimat == "laying on floor like uhh mequot" then
 PlayAnim(tostring(139854803244662))
@@ -1141,9 +1145,10 @@ end; })
 AnimDisabler = nil
 
 PremiumFeatures:CreateButton({Name = "Stop All Anims"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if hasAccess then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 if AnimDisabler then
 AnimDisabler:Disconnect()
@@ -1158,9 +1163,10 @@ end; })
 PremiumFeatures:CreateParagraph({Title = "Info [ Invisibility ]", Content = "You'll become kinda invisible using secret anim ╚(•⌂•)╝\nPS: you'll become visible for a few seconds during other animations like dance or shoot and etc."})
 
 PremiumFeatures:CreateButton({Name = "Turn On Invisibility [ BETA ]"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if hasAccess then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 if AnimDisabler then
 AnimDisabler:Disconnect()
@@ -1222,9 +1228,10 @@ end
 end; })
 
 PremiumFeatures:CreateButton({Name = "Turn Off Invisibility [ BETA ]"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if hasAccess then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 if AnimDisabler then
 AnimDisabler:Disconnect()
@@ -1239,9 +1246,10 @@ end; })
 PremiumFeatures:CreateParagraph({Title = "Info [ All Abilities ]", Content = "You'll get all abilities. ( That's all, but it's pretty OP )"})
 
 PremiumFeatures:CreateButton({Name = "Get All Abilities [kinda OP!!]"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if hasAccess then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 if TestFireSignal() ~= true then
 ErrorSignal()
