@@ -897,7 +897,7 @@ local product_price = product_info.PriceInRobux
 return tostring(product_price)
 end
 
-getgenv().dodnhPremium = false
+getgenv().dodnhPremium = true
 function HavePremium()
 if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(game:GetService("Players").LocalPlayer.UserId, 1264479709) or getgenv().dodnhPremium == true then
 return true
@@ -929,7 +929,7 @@ local pprice = pcall(GetPrice(1264479709)) or 39
 PremiumFeatures:CreateLabel("Buy gamepass to unlock OP functions! [ Cost "..pprice.." robux ]")
 
 PremiumFeatures:CreateButton({Name = "Open Gamepass Link"; Callback = function()
-if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(game:GetService("Players").LocalPlayer.UserId, 1264479709) then
+if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(game:GetService("Players").LocalPlayer.UserId, 1375691645) then
     DiscordLib:Notification("Error!", "Arleady have gamepass!", "Okay!")
 else
     OpenLink("https://www.roblox.com/game-pass/1264479709")
