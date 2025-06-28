@@ -929,7 +929,7 @@ local pprice = pcall(GetPrice(1264479709)) or 39
 PremiumFeatures:CreateLabel("Buy gamepass to unlock OP functions! [ Cost "..pprice.." robux ]")
 
 PremiumFeatures:CreateButton({Name = "Open Gamepass Link"; Callback = function()
-if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(game:GetService("Players").LocalPlayer.UserId, 1375691645) then
+if game:GetService("MarketplaceService"):UserOwnsGamePassAsync(game:GetService("Players").LocalPlayer.UserId, 7099384011) then
     DiscordLib:Notification("Error!", "Arleady have gamepass!", "Okay!")
 else
     OpenLink("https://www.roblox.com/game-pass/1264479709")
@@ -946,7 +946,7 @@ preferedkillingmethod = TableFirstElementToString(Value)
 end; })
 
 PremiumFeatures:CreateButton({Name = "Insta-Kill Killer [OP!]"; Callback = function()
-if hasAccess then
+if true then
     -- Code for premium users
 else
     ErrorPremium()
@@ -1020,7 +1020,7 @@ PremiumFeatures:CreateParagraph({Title = "Info [ Server-Break ]", Content = "Bre
 PremiumFeatures:CreateParagraph({Title = "How To Use [ Server-Break ]", Content = "Activate when match started ( you should be survivor, AKA civilian ),\nthen wait until everyone dies ( when lms starts between you and killer ).\nAfter this you'll automatically rejoin this server and ta-daa!\nServer will break."})
 
 PremiumFeatures:CreateButton({Name = "Server-Break [OP!]"; Callback = function()
-if hasAccess then
+if true then
     -- Code for premium users
 else
     ErrorPremium()
@@ -1083,7 +1083,7 @@ end; })
 PremiumFeatures:CreateParagraph({Title = "Info [ No Stun ]", Content = "You won't be stunned anymore. That's all"})
 
 PremiumFeatures:CreateToggle({Name = "No Stun"; CurrentValue = false; Callback = function(Value)
-if hasAccess then
+if true then
     -- Code for premium users
 else
     ErrorPremium()
@@ -1124,7 +1124,7 @@ loadedanim:Play()
 end
 
 PremiumFeatures:CreateButton({Name = "Play Choosen Anim"; Callback = function()
-if hasAccess then
+if true then
     -- Code for premium users
 else
     ErrorPremium()
@@ -1145,7 +1145,7 @@ end; })
 AnimDisabler = nil
 
 PremiumFeatures:CreateButton({Name = "Stop All Anims"; Callback = function()
-if hasAccess then
+if true then
     -- Code for premium users
 else
     ErrorPremium()
@@ -1163,7 +1163,7 @@ end; })
 PremiumFeatures:CreateParagraph({Title = "Info [ Invisibility ]", Content = "You'll become kinda invisible using secret anim ╚(•⌂•)╝\nPS: you'll become visible for a few seconds during other animations like dance or shoot and etc."})
 
 PremiumFeatures:CreateButton({Name = "Turn On Invisibility [ BETA ]"; Callback = function()
-if hasAccess then
+if true then
     -- Code for premium users
 else
     ErrorPremium()
@@ -1228,7 +1228,7 @@ end
 end; })
 
 PremiumFeatures:CreateButton({Name = "Turn Off Invisibility [ BETA ]"; Callback = function()
-if hasAccess then
+if true then
     -- Code for premium users
 else
     ErrorPremium()
@@ -1246,7 +1246,7 @@ end; })
 PremiumFeatures:CreateParagraph({Title = "Info [ All Abilities ]", Content = "You'll get all abilities. ( That's all, but it's pretty OP )"})
 
 PremiumFeatures:CreateButton({Name = "Get All Abilities [kinda OP!!]"; Callback = function()
-if hasAccess then
+if true then
     -- Code for premium users
 else
     ErrorPremium()
