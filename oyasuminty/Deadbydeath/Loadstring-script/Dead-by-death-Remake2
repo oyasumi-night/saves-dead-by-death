@@ -1,0 +1,129 @@
+-- Function to return the URL for followings
+function ReturnURL(which, cursor)
+    local qqz = which or 1
+    local zzx = (cursor and "&cursor="..cursor.."") or "&cursor="
+    if qqz == 1 then
+        return "https://friends.roblox.com/v1/users/"..game.Players.LocalPlayer.UserId.."/followings?sortOrder=Des&limit=100"..zzx
+    else
+        return "https://friends.roproxy.com/v1/users/"..game.Players.LocalPlayer.UserId.."/followings?sortOrder=Des&limit=100"..zzx
+    end
+end
+
+-- Function to convert the first element of a table to a string
+function TableFirstElementToString(tbl)
+    if type(tbl) == "table" then
+        for _,element in ipairs(tbl) do
+            return tostring(element)
+        end
+    else
+        return tostring(tbl)
+    end
+end
+
+-- Load Rayfield UI
+pcall(function()
+    Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/oyasumi-night/Nexerhub-dead-by-death/refs/heads/main/Source-interface-deadbydeath-rayfield"))()
+end)
+
+-- Notify function
+function Notify(title, content, time, mode)
+    time = time or 10
+    mode = mode or false
+    local img = mode and 136186846844342 or 71508738660632
+    Rayfield:Notify({
+        Title = title,
+        Content = content,
+        Duration = time,
+        Image = img,
+        Actions = {},
+    })
+end
+
+-- Create the main window
+Window = Rayfield:CreateWindow({
+    Name = "Nexer Hub - Launcher",
+    Icon = 0,    
+    LoadingTitle = "Nexer Hub Launcher",
+    LoadingSubtitle = "by nexer",
+    Theme = "Amethyst",
+    DisableRayfieldPrompts = false,
+    DisableBuildWarnings = false,
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = "DoD:NH",
+        FileName = "DoD:NH_Configuration"
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "noinvitelink",
+        RememberJoins = true
+    },
+    KeySystem = false,
+    KeySettings = {
+        Title = "Verify yourself firstly!",
+        Subtitle = "Key Needed!",
+        Note = "The key is ''cheese''",
+        FileName = "Key",
+        SaveKey = true,
+        GrabKeyFromSite = false,
+        Key = {"cheese"}
+    }
+})
+
+local Main = Window:CreateTab("Main", 85436299122876)
+
+-- Function to copy a link to clipboard
+function CopyLink(link)
+    local url = tostring(link)
+    setclipboard(url)
+    Notify("Success!", "Copied Link!", 10, true)
+end
+
+-- Function to open a link
+function OpenLink(link)
+    local url = tostring(link)
+    if openweb then
+        local suc, err = pcall(function() openweb(url) end)
+        if not suc then CopyLink(url) end
+    elseif WebHandler then
+        local suc, err = pcall(function() WebHandler:OpenWeb(url) end)
+        if not suc then CopyLink(url) end
+    else
+        CopyLink(url)
+    end
+end
+
+-- Create UI elements
+Main:CreateParagraph({Title = "Clarification!", Content = "This script is remade by Oyasuminty, no key, no needed to follow. click profile for original creator."})
+
+Main:CreateButton({Name = "Open Profile"; Callback = function()
+    OpenLink("https://www.roblox.com/users/7529992299/profile")
+end; })
+
+Main:CreateButton({Name = "Copy Profile Link"; Callback = function()
+    CopyLink("https://www.roblox.com/users/7529992299/profile")
+end; })
+
+-- Function to launch the script
+local function LaunchScript()
+    Notify("Success!", "Launching script, please wait...", 10, true)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/oyasumi-night/Nexerhub-dead-by-death/refs/heads/main/Dead-by-death.txt"))()
+end
+
+-- Check if the script has been launched before
+if not game.Players.LocalPlayer:FindFirstChild("ScriptLaunched") then
+    -- Create a flag to indicate the script has been launched
+    local flag = Instance.new("BoolValue")
+    flag.Name = "ScriptLaunched"
+    flag.Value = true
+    flag.Parent = game.Players.LocalPlayer
+end
+
+-- Launch the script if the flag exists
+if game.Players.LocalPlayer:FindFirstChild("ScriptLaunched") then
+    LaunchScript()
+else
+    Main:CreateButton({Name = "Launch Script"; Callback = function()
+        LaunchScript()
+    end; })
+end
