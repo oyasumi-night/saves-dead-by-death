@@ -1299,9 +1299,10 @@ preferedkillingmethod = TableFirstElementToString(Value)
 end; })
 
 PremiumFeatures:CreateButton({Name = "Insta-Kill Killer [OP!]"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if true then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 
 game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteEvents"):WaitForChild("AbilitySelection"):FireServer(unpack({{tostring("Cloak")}}))
@@ -1378,9 +1379,10 @@ PremiumFeatures:CreateParagraph({Title = "Info [ Server-Break ]", Content = "Bre
 PremiumFeatures:CreateParagraph({Title = "How To Use [ Server-Break ]", Content = "Activate when match started ( you should be survivor, AKA civilian ),\nthen wait until everyone dies ( when lms starts between you and killer ).\nAfter this you'll automatically rejoin this server and ta-daa!\nServer will break."})
 
 PremiumFeatures:CreateButton({Name = "Server-Break [OP!]"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if true then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 
 if LP.Character:WaitForChild("HumanoidRootPart").Anchored == true then
@@ -1445,9 +1447,10 @@ end; })
 PremiumFeatures:CreateParagraph({Title = "Info [ Anti-Stun ]", Content = "You won't be stunned anymore. Like never. That's all!"})
 
 PremiumFeatures:CreateToggle({Name = "Anti-Stun"; CurrentValue = false; Callback = function(Value)
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if true then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 AntiStun = Value
 if AntiStun == true then
@@ -1478,9 +1481,10 @@ loadedanim:Play()
 end
 
 PremiumFeatures:CreateButton({Name = "Play Choosen Anim"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if true then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 if preferedanimat == "laying on floor like uhh mequot" then
 PlayAnim(tostring(139854803244662))
@@ -1498,9 +1502,10 @@ end; })
 AnimDisabler = nil
 
 PremiumFeatures:CreateButton({Name = "Stop All Anims"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if true then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 if AnimDisabler then
 AnimDisabler:Disconnect()
@@ -1635,9 +1640,10 @@ PremiumFeatures:CreateParagraph({Title = "Info [ Invisibility ]", Content = "You
 
 local invis_arl_act = false
 PremiumFeatures:CreateButton({Name = "Turn On/Off Invisibility [ BETA ]"; Callback = function()
-if HavePremium() ~= true then
-ErrorPremium()
-return nil
+if true then
+    -- Code for premium users
+else
+    ErrorPremium()
 end
 if invis_arl_act == false then
 invis_arl_act = true
