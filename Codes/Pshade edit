@@ -1,0 +1,6 @@
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "pshade", 
+	Text = "please wait", 
+	Icon = ""
+})
+loadstring(game:HttpGet("https://raw.githubusercontent.com/oyasumi-night/saves-dead-by-death/refs/heads/main/Codes/Pshade-patrick"))()
