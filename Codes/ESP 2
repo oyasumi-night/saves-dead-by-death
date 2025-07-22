@@ -2527,80 +2527,104 @@ local function Update()
 	end
 
 	if Options.MenuOpen.Value and MenuLoaded then
-		local MLocation = GetMouseLocation();
-		shared.MenuDrawingData.Instances.Main.Color = Color3.fromHSV(tick() * 24 % 255/255, 1, 1);
-		local MainInstance = Menu:GetInstance'Main';
-		
-		local Values = {
-			MainInstance.Position.X;
-			MainInstance.Position.Y;
-			MainInstance.Position.X + MainInstance.Size.X;
-			MainInstance.Position.Y + MainInstance.Size.Y;
-		};
-		
-		if MainInstance and (MouseHoveringOver(Values) or (SubMenu.Open and MouseHoveringOver(SubMenu.Bounds))) then
-			Debounce.CursorVis = true;
-			
-			Menu:UpdateMenuInstance'Cursor1'{
-				Visible	= true;
-				From	= V2New(MLocation.x, MLocation.y);
-				To		= V2New(MLocation.x + 5, MLocation.y + 6);
-			}
-			Menu:UpdateMenuInstance'Cursor2'{
-				Visible	= true;
-				From	= V2New(MLocation.x, MLocation.y);
-				To		= V2New(MLocation.x, MLocation.y + 8);
-			}
-			Menu:UpdateMenuInstance'Cursor3'{
-				Visible	= true;
-				From	= V2New(MLocation.x, MLocation.y + 6);
-				To		= V2New(MLocation.x + 5, MLocation.y + 5);
-			}
-		else
-			if Debounce.CursorVis then
-				Debounce.CursorVis = false;
-				
-				Menu:UpdateMenuInstance'Cursor1'{Visible = false};
-				Menu:UpdateMenuInstance'Cursor2'{Visible = false};
-				Menu:UpdateMenuInstance'Cursor3'{Visible = false};
-			end
-		end
-		if MouseHeld then
-			local MousePos = GetMouseLocation();
+    local MLocation = GetMouseLocation()
+    shared.MenuDrawingData.Instances.Main.Color = Color3.fromHSV(tick() * 24 % 255 / 255, 1, 1)
+    local MainInstance = Menu:GetInstance'Main'
 
-			if Dragging then
-				DraggingWhat.Slider.Position = V2New(math.clamp(MLocation.X - DraggingWhat.Slider.Size.X / 2, DraggingWhat.Line.Position.X, DraggingWhat.Line.Position.X + DraggingWhat.Line.Size.X - DraggingWhat.Slider.Size.X), DraggingWhat.Slider.Position.Y);
-				local Percent	= (DraggingWhat.Slider.Position.X - DraggingWhat.Line.Position.X) / ((DraggingWhat.Line.Position.X + DraggingWhat.Line.Size.X - DraggingWhat.Line.Position.X) - DraggingWhat.Slider.Size.X);
-				local Value		= CalculateValue(DraggingWhat.Min, DraggingWhat.Max, Percent);
-				DraggingWhat.Option(Value);
-			elseif DraggingUI then
-				Debounce.UIDrag = true;
-				local Main = Menu:GetInstance'Main';
-				Main.Position = MousePos + DragOffset;
-			elseif DragTracerPosition then
-				TracerPosition = MousePos;
-			end
-		else
-			Dragging = false;
-			DragTracerPosition = false;
-			if DraggingUI and Debounce.UIDrag then
-				Debounce.UIDrag = false;
-				DraggingUI = false;
-				CreateMenu(Menu:GetInstance'Main'.Position);
-			end
-		end
-		if not Debounce.Menu then
-			Debounce.Menu = true;
-			ToggleMenu();
-		end
-	elseif Debounce.Menu and not Options.MenuOpen.Value then
-		Debounce.Menu = false;
-		ToggleMenu();
-	end
+    local Values = {
+        MainInstance.Position.X,
+        MainInstance.Position.Y,
+        MainInstance.Position.X + MainInstance.Size.X,
+        MainInstance.Position.Y + MainInstance.Size.Y,
+    }
+
+    local isTouchDevice = UserInputService.TouchEnabled
+
+    if MainInstance and (MouseHoveringOver(Values) or (SubMenu.Open and MouseHoveringOver(SubMenu.Bounds))) then
+        Debounce.CursorVis = true
+
+        -- Update cursor visibility for touch devices
+        if isTouchDevice then
+            -- Handle touch cursor
+            Menu:UpdateMenuInstance'Cursor1'{
+                Visible = true,
+                From = V2New(MLocation.x, MLocation.y),
+                To = V2New(MLocation.x + 5, MLocation.y + 6),
+            }
+            Menu:UpdateMenuInstance'Cursor2'{
+                Visible = true,
+                From = V2New(MLocation.x, MLocation.y),
+                To = V2New(MLocation.x, MLocation.y + 8),
+            }
+            Menu:UpdateMenuInstance'Cursor3'{
+                Visible = true,
+                From = V2New(MLocation.x, MLocation.y + 6),
+                To = V2New(MLocation.x + 5, MLocation.y + 5),
+            }
+        else
+            -- Handle mouse cursor
+            Menu:UpdateMenuInstance'Cursor1'{
+                Visible = true,
+                From = V2New(MLocation.x, MLocation.y),
+                To = V2New(MLocation.x + 5, MLocation.y + 6),
+            }
+            Menu:UpdateMenuInstance'Cursor2'{
+                Visible = true,
+                From = V2New(MLocation.x, MLocation.y),
+                To = V2New(MLocation.x, MLocation.y + 8),
+            }
+            Menu:UpdateMenuInstance'Cursor3'{
+                Visible = true,
+                From = V2New(MLocation.x, MLocation.y + 6),
+                To = V2New(MLocation.x + 5, MLocation.y + 5),
+            }
+        end
+    else
+        if Debounce.CursorVis then
+            Debounce.CursorVis = false
+
+            Menu:UpdateMenuInstance'Cursor1'{Visible = false}
+            Menu:UpdateMenuInstance'Cursor2'{Visible = false}
+            Menu:UpdateMenuInstance'Cursor3'{Visible = false}
+        end
+    end
+
+    if MouseHeld or (isTouchDevice and TouchHeld) then
+        local MousePos = GetMouseLocation()
+
+        if Dragging then
+            DraggingWhat.Slider.Position = V2New(math.clamp(MousePos.X - DraggingWhat.Slider.Size.X / 2, DraggingWhat.Line.Position.X, DraggingWhat.Line.Position.X + DraggingWhat.Line.Size.X - DraggingWhat.Slider.Size.X), DraggingWhat.Slider.Position.Y)
+            local Percent = (DraggingWhat.Slider.Position.X - DraggingWhat.Line.Position.X) / ((DraggingWhat.Line.Position.X + DraggingWhat.Line.Size.X - DraggingWhat.Line.Position.X) - DraggingWhat.Slider.Size.X)
+            local Value = CalculateValue(DraggingWhat.Min, DraggingWhat.Max, Percent)
+            DraggingWhat.Option(Value)
+        elseif DraggingUI then
+            Debounce.UIDrag = true
+            local Main = Menu:GetInstance'Main'
+            Main.Position = MousePos + DragOffset
+        elseif DragTracerPosition then
+            TracerPosition = MousePos
+        end
+    else
+        Dragging = false
+        DragTracerPosition = false
+        if DraggingUI and Debounce.UIDrag then
+            Debounce.UIDrag = false
+            DraggingUI = false
+            CreateMenu(Menu:GetInstance'Main'.Position)
+        end
+    end
+
+    if not Debounce.Menu then
+        Debounce.Menu = true
+        ToggleMenu()
+    end
+elseif Debounce.Menu and not Options.MenuOpen.Value then
+    Debounce.Menu = false
+    ToggleMenu()
 end
 
-RunService:UnbindFromRenderStep(GetDataName);
-RunService:UnbindFromRenderStep(UpdateName);
+RunService:UnbindFromRenderStep(GetDataName)
+RunService:UnbindFromRenderStep(UpdateName)
 
-RunService:BindToRenderStep(GetDataName, 300, UpdatePlayerData);
-RunService:BindToRenderStep(UpdateName, 199, Update);
+RunService:BindToRenderStep(GetDataName, 300, UpdatePlayerData)
+RunService:BindToRenderStep(UpdateName, 199, Update)
