@@ -28,7 +28,7 @@ local UIButtons = {}
 local Sliders = {}
 local ColorPicker = { Loading = false, LastGenerated = 0 }
 local Dragging = false
-local DraggingUI = false
+local DraggingUI = true
 local Rainbow = false
 local DragOffset = V2New()
 local DraggingWhat = nil
@@ -36,7 +36,7 @@ local OldData = {}
 local IgnoreList = {}
 local EnemyColor = Color3.new(1, 0, 0)
 local TeamColor = Color3.new(0, 1, 0)
-local MenuLoaded = false
+local MenuLoaded = true
 local ErrorLogging = false
 local TracerPosition = V2New(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y - 135)
 local DragTracerPosition = false
