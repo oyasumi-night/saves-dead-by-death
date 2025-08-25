@@ -77,7 +77,7 @@ Rayfield:Notify({
 end
 
 pcall(function()
-WebHandler = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pro666Pro/CustomFunctions/refs/heads/main/funcs.txt"))()
+WebHandler = loadstring(game:HttpGet("https://raw.githubusercontent.com/oyasumi-night/saves-dead-by-death/refs/heads/main/Diebydeath/New/Update/Functions4link"))()
 end)
 
 Window = Rayfield:CreateWindow({
