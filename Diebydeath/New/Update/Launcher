@@ -37,7 +37,7 @@ return false
 end
 
 if CheckIfUserFollowed() == true then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Pro666Pro/Die-Of-Death/refs/heads/main/fuck-you.skid"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/oyasumi-night/saves-dead-by-death/refs/heads/main/Diebydeath/New/Update/Skidlmao.2link"))()
 return nil
 end
 
@@ -167,7 +167,7 @@ pcall(function()
 game.CoreGui.OldRayField:Destroy()
 end)
 Notify("Success!", "Launching script, please wait...", 10, true)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Pro666Pro/Die-Of-Death/refs/heads/main/fuck-you.skid"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/oyasumi-night/saves-dead-by-death/refs/heads/main/Diebydeath/New/Update/Skidlmao.2link"))()
 else
 Notify("Error!", "You aren't followed! ( If you arleady followed, wait for about 5 minutes and try again )")
 end
